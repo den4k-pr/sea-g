@@ -1,0 +1,59 @@
+
+
+
+
+@font-face {
+    font-family: 'Sansation-Bold';
+    src: url('../fonts/Sansation-Bold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'SourceSans3-Regular';
+    src: url('../fonts/SourceSans3-Regular.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'SourceSans3-Medium';
+    src: url('../fonts/SourceSans3-Medium.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'SourceSans3-Bold';
+    src: url('../fonts/SourceSans3-Bold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Sansation-Regular';
+    src: url('../fonts/Sansation-Regular.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Outfit-Bold';
+    src: url('../fonts/Outfit-Bold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Outfit-Medium';
+    src: url('../fonts/Outfit-Medium.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Outfit-Regular';
+    src: url('../fonts/Outfit-Regular.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}

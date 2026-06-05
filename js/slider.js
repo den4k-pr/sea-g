@@ -77,11 +77,12 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Ініціалізація Слайдера 3 (Картки-відгуки з картинками)
+  // Ініціалізація Слайдера 3 (Картки-відгуки з картинками та відео)
   const rrSliderEl = document.querySelector('.rr-slider');
+  let rrSwiperInstance = null;
 
   if (rrSliderEl) {
-    new Swiper(rrSliderEl, {
+    rrSwiperInstance = new Swiper(rrSliderEl, {
       loop: true,
       spaceBetween: 20,
       slidesPerView: 'auto', // Працює у парі з фіксованою шириною .swiper-slide в CSS
@@ -98,6 +99,49 @@ document.addEventListener("DOMContentLoaded", function () {
         nextEl: '.rr-btn-next', 
         prevEl: '.rr-btn-prev' 
       },
+      on: {
+        // Якщо користувач перегортає слайд — зупиняємо відео
+        slideChange: function () {
+          document.querySelectorAll('.slide-video').forEach(video => {
+            if (!video.paused) {
+              video.pause();
+              const wrapper = video.closest('.slide-media-wrapper');
+              if (wrapper) wrapper.classList.remove('is-playing');
+            }
+          });
+        }
+      }
+    });
+
+    // Логіка кліку по відео/постеру для Слайдера 3
+    document.querySelectorAll('.slide-media-wrapper').forEach(wrapper => {
+      const video = wrapper.querySelector('.slide-video');
+      
+      if (video) {
+        wrapper.addEventListener('click', function () {
+          if (video.paused) {
+            // 1. Зупиняємо всі інші відео перед запуском нового
+            document.querySelectorAll('.slide-video').forEach(v => {
+              v.pause();
+              const vWrapper = v.closest('.slide-media-wrapper');
+              if (vWrapper) vWrapper.classList.remove('is-playing');
+            });
+
+            // 2. Зупиняємо автовідтворення слайдера
+            if (rrSwiperInstance && rrSwiperInstance.autoplay) {
+              rrSwiperInstance.autoplay.stop();
+            }
+            
+            // 3. Запускаємо поточне
+            video.play();
+            this.classList.add('is-playing');
+          } else {
+            // Якщо клікнути по працюючому відео, воно зупиниться
+            video.pause();
+            this.classList.remove('is-playing');
+          }
+        });
+      }
     });
   }
 
